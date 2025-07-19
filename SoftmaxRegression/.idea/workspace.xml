@@ -38,7 +38,6 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/tanchutat/Documents/PersonalProgramming/SoftmaxRegression/SoftmaxRegression",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -70,6 +69,7 @@
       <workItem from="1751292707675" duration="2438000" />
       <workItem from="1751773670556" duration="638000" />
       <workItem from="1751775344307" duration="15000" />
+      <workItem from="1751846346397" duration="1234000" />
     </task>
     <servers />
   </component>
