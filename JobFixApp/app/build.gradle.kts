@@ -39,6 +39,8 @@ android {
     }
 }
 
+val navVersion = "2.9.3"
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -49,6 +51,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation("androidx.navigation:navigation-compose:${navVersion}")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
