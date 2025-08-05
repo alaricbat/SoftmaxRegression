@@ -1,8 +1,6 @@
 package com.advance.jobfix
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -11,22 +9,30 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.advance.jobfix.ui.theme.JobFixTheme
+import com.advance.jobfix.presentation.ui.base.BaseActivity
+import com.advance.jobfix.presentation.ui.theme.JobFixTheme
+import com.advance.jobfix.presentation.ui.theme.WhiteTrafficWhite
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+class MainActivity : BaseActivity() {
+
+    @Composable
+    override fun Content() {
         enableEdgeToEdge()
-        setContent {
-            JobFixTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+        JobFixTheme {
+            Scaffold(
+                modifier = Modifier.fillMaxSize(),
+                containerColor = WhiteTrafficWhite
+            ) { innerPadding ->
+                Greeting(
+                    name = "Android",
+                    modifier = Modifier.padding(innerPadding)
+                )
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
     }
 }
 
