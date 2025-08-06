@@ -13,7 +13,7 @@ class MainActivity : BaseActivity() {
     override fun Content() {
         enableEdgeToEdge()
         JobFixTheme {
-            HomeScreen()
+            HomeScreen(this)
         }
     }
 
