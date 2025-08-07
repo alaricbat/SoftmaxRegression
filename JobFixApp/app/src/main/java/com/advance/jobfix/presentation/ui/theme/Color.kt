@@ -11,3 +11,4 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 val WhiteTrafficWhite = Color(0xF4F4F4F4)
+val GraphiteBlack = Color(0xFF27282C)

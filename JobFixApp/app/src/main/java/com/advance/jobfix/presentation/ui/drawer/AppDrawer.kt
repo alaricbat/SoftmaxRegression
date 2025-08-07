@@ -1,18 +1,25 @@
 package com.advance.jobfix.presentation.ui.drawer
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
+import androidx.compose.material3.NavigationBarDefaults
+import androidx.compose.material3.NavigationDrawerItem
+import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
@@ -27,7 +34,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.advance.jobfix.R
 import com.advance.jobfix.presentation.ui.component.JobfitDestination
+import com.advance.jobfix.presentation.ui.theme.GraphiteBlack
 import com.advance.jobfix.presentation.ui.theme.JobFixTheme
+import com.advance.jobfix.presentation.ui.theme.WhiteTrafficWhite
 
 @Composable
 fun AppDrawer(
@@ -39,39 +48,103 @@ fun AppDrawer(
     closeDrawer: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+
+    val itemCornerRadius = 5.dp
+
     ModalDrawerSheet(
         drawerState = drawerState,
         modifier = modifier
     ) {
         JobfitLogo(
-            modifier = Modifier.padding(
-                horizontal = 10.dp,
-                vertical = 10.dp
+            modifier = modifier
+        )
+        Spacer(
+            modifier.padding(
+                PaddingValues(5.dp)
             )
+        )
+        NavigationDrawerItem(
+            label = {
+                Text(
+                    text = stringResource(R.string.str_home)
+                )
+            },
+            selected = currentRoute == JobfitDestination.HOME_ROUTE,
+            onClick = {
+                //TODO: Implement later
+//                navigateToHome()
+//                closeDrawer()
+            },
+            shape = RoundedCornerShape(itemCornerRadius),
+            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+        )
+        NavigationDrawerItem(
+            label = {
+                Text(
+                    text = stringResource(R.string.str_about_me)
+                )
+            },
+            selected = currentRoute == JobfitDestination.ABOUT_ME_ROUTE,
+            onClick = {
+                //TODO: Implement later
+//                navigateToAboutMe()
+//                closeDrawer()
+            },
+            shape = RoundedCornerShape(itemCornerRadius),
+            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+        )
+        NavigationDrawerItem(
+            label = {
+                Text(
+                    text = stringResource(R.string.str_algorithm)
+                )
+            },
+            selected = currentRoute == JobfitDestination.ALGORITHM_ROUTE,
+            onClick = {
+                //TODO: Implement later
+//                navigateToAlgorithm()
+//                closeDrawer()
+            },
+            shape = RoundedCornerShape(itemCornerRadius),
+            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
         )
     }
 }
 
 @Composable
 private fun JobfitLogo(modifier: Modifier = Modifier) {
-    Row(
-        modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(GraphiteBlack),
+        contentAlignment = Alignment.Center
     ) {
-        Icon(
-            modifier = modifier.size(50.dp),
-            painter = painterResource(R.drawable.ic_jobfit_background_tint),
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.primary,
-        )
-        Spacer(modifier.width(8.dp))
         Text(
-            "Jobfit Menus",
-            modifier = modifier.fillMaxWidth(),
+            text = stringResource(
+                id = R.string.str_jobfit_menus
+            ),
+            modifier = Modifier
+                .fillMaxWidth(),
             textAlign = TextAlign.Center,
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold
+            fontSize = 15.sp,
+            fontWeight = FontWeight.Bold,
+            color = WhiteTrafficWhite
         )
+        Row(
+            modifier = modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Image(
+                modifier = modifier
+                    .padding(
+                        paddingValues = PaddingValues(10.dp)
+                    )
+                    .size(35.dp),
+                painter = painterResource(R.drawable.ic_jobfit_background_filled),
+                contentDescription = null,
+            )
+        }
     }
     HorizontalDivider()
 }
