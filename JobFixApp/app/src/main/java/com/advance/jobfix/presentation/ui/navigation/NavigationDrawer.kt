@@ -1,5 +1,6 @@
-package com.advance.jobfix.presentation.ui.drawer
+package com.advance.jobfix.presentation.ui.navigation
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -9,15 +10,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
-import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.Text
@@ -33,13 +30,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.advance.jobfix.R
-import com.advance.jobfix.presentation.ui.component.JobfitDestination
 import com.advance.jobfix.presentation.ui.theme.GraphiteBlack
 import com.advance.jobfix.presentation.ui.theme.JobFixTheme
 import com.advance.jobfix.presentation.ui.theme.WhiteTrafficWhite
 
 @Composable
-fun AppDrawer(
+fun NavigationDrawer(
     drawerState: DrawerState,
     currentRoute: String,
     navigateToHome: () -> Unit,
@@ -71,9 +67,9 @@ fun AppDrawer(
             },
             selected = currentRoute == JobfitDestination.HOME_ROUTE,
             onClick = {
-                //TODO: Implement later
-//                navigateToHome()
-//                closeDrawer()
+                Log.d("AppDrawer", "navigate to [Home]")
+                navigateToHome()
+                closeDrawer()
             },
             shape = RoundedCornerShape(itemCornerRadius),
             modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
@@ -86,9 +82,9 @@ fun AppDrawer(
             },
             selected = currentRoute == JobfitDestination.ABOUT_ME_ROUTE,
             onClick = {
-                //TODO: Implement later
-//                navigateToAboutMe()
-//                closeDrawer()
+                Log.d("AppDrawer", "navigate to [About me]")
+                navigateToAboutMe()
+                closeDrawer()
             },
             shape = RoundedCornerShape(itemCornerRadius),
             modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
@@ -101,9 +97,9 @@ fun AppDrawer(
             },
             selected = currentRoute == JobfitDestination.ALGORITHM_ROUTE,
             onClick = {
-                //TODO: Implement later
-//                navigateToAlgorithm()
-//                closeDrawer()
+                Log.d("AppDrawer", "navigate to [Algorithm]")
+                navigateToAlgorithm()
+                closeDrawer()
             },
             shape = RoundedCornerShape(itemCornerRadius),
             modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
@@ -124,8 +120,7 @@ private fun JobfitLogo(modifier: Modifier = Modifier) {
             text = stringResource(
                 id = R.string.str_jobfit_menus
             ),
-            modifier = Modifier
-                .fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
             fontSize = 15.sp,
             fontWeight = FontWeight.Bold,
@@ -154,7 +149,7 @@ private fun JobfitLogo(modifier: Modifier = Modifier) {
 @Composable
 fun PreviewAppDrawer() {
     JobFixTheme {
-        AppDrawer(
+        NavigationDrawer(
             drawerState = rememberDrawerState(initialValue = DrawerValue.Open),
             currentRoute = JobfitDestination.HOME_ROUTE,
             navigateToHome = {},

@@ -1,4 +1,4 @@
-package com.advance.jobfix.presentation.ui.home
+package com.advance.jobfix.presentation.ui.app
 
 import android.app.Activity
 import androidx.compose.material3.ModalNavigationDrawer
@@ -12,9 +12,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.advance.jobfix.presentation.ui.component.JobfitDestination
-import com.advance.jobfix.presentation.ui.component.NavigationActions
-import com.advance.jobfix.presentation.ui.drawer.AppDrawer
+import com.advance.jobfix.presentation.ui.navigation.JobfitDestination
+import com.advance.jobfix.presentation.ui.navigation.NavigationActions
+import com.advance.jobfix.presentation.ui.navigation.NavigationDrawer
+import com.advance.jobfix.presentation.ui.navigation.NavigationGraph
 import com.advance.jobfix.presentation.ui.state.DrawerState
 import com.advance.jobfix.presentation.ui.theme.JobFixTheme
 import kotlinx.coroutines.launch
@@ -22,7 +23,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
-fun HomeScreen(activity: Activity) {
+fun JobfitApp(activity: Activity) {
     JobFixTheme {
 
         val widthSizeClass = calculateWindowSizeClass(activity).widthSizeClass
@@ -43,7 +44,7 @@ fun HomeScreen(activity: Activity) {
 
         ModalNavigationDrawer(
             drawerContent = {
-                AppDrawer(
+                NavigationDrawer(
                     drawerState = sizeAwareDrawerState,
                     currentRoute = currentRoute,
                     navigateToHome = navigationActions.navigateToHome,
@@ -60,7 +61,12 @@ fun HomeScreen(activity: Activity) {
             // Only enable opening the drawer via gestures if the screen is not expanded
             gesturesEnabled = !isExpandedScreen
         ) {
-            //Screen content
+            //Config navigation graph
+            //This graph will be used to check id then switching to corresponding layouts.
+            NavigationGraph(
+                isExpandedScreen = isExpandedScreen,
+                navController = navController,
+            )
         }
 
 

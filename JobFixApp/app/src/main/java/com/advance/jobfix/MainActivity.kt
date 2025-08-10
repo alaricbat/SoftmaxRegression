@@ -2,9 +2,10 @@ package com.advance.jobfix
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import com.advance.jobfix.presentation.ui.base.BaseActivity
-import com.advance.jobfix.presentation.ui.home.HomeScreen
+import com.advance.jobfix.presentation.ui.app.JobfitApp
 import com.advance.jobfix.presentation.ui.theme.JobFixTheme
 
 class MainActivity : BaseActivity() {
@@ -13,7 +14,7 @@ class MainActivity : BaseActivity() {
     override fun Content() {
         enableEdgeToEdge()
         JobFixTheme {
-            HomeScreen(this)
+            JobfitApp(this)
         }
     }
 
