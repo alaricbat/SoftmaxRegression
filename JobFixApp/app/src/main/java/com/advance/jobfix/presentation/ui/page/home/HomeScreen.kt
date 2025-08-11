@@ -4,13 +4,16 @@ import android.text.InputType
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -80,18 +83,60 @@ fun HomeScreen(
 
             Row (
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .padding(PaddingValues(10.dp)),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    modifier = Modifier.padding(8.dp),
-                    textAlign = TextAlign.Center,
+                    modifier = Modifier.width(100.dp),
+                    textAlign = TextAlign.Start,
                     text = stringResource(R.string.str_linguistic) + " : ",
                     fontWeight = FontWeight.Bold
                 )
-
                 SimpleTextField()
+            }
 
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(PaddingValues(10.dp)),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    modifier = Modifier.width(100.dp),
+                    textAlign = TextAlign.Start,
+                    text = stringResource(R.string.str_musical).trimIndent() + " : ",
+                    fontWeight = FontWeight.Bold
+                )
+                SimpleTextField()
+            }
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(PaddingValues(10.dp)),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    modifier = Modifier.width(100.dp),
+                    textAlign = TextAlign.Start,
+                    text = stringResource(R.string.str_bodily).trimIndent(),
+                    fontWeight = FontWeight.Bold
+                )
+                SimpleTextField()
+            }
+
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(PaddingValues(50.dp)),
+                onClick = {}
+            ) {
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.str_get_result).trimIndent(),
+                    textAlign = TextAlign.Center
+                )
             }
 
         }
@@ -126,6 +171,9 @@ private fun HomeTopAppBar(
 fun SimpleTextField() {
     var text by remember { mutableStateOf(TextFieldValue("")) }
     TextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 10.dp),
         value = text,
         onValueChange = { newText ->
             text = newText

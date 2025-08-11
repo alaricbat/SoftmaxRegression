@@ -7,4 +7,13 @@
     <string name="str_about_me">About Me</string>
     <string name="str_algorithm">Algorithm</string>
 
+    <string name="str_app_description">
+        Discover your perfect career match in minutes. JobFit analyzes your strengths in areas such as logic, language, creativity, spatial thinking, and problem solving. \n\nBy evaluating your unique skill profile, the app recommends the professions where you are most likely to thrive, giving you a clear path toward a fulfilling and successful career.
+    </string>
+
+    <string name="str_linguistic">Linguistic</string>
+    <string name="str_musical">Musical</string>
+    <string name="str_bodily">Bodily</string>
+    <string name="str_get_result">Get Result</string>
+
 </resources>
