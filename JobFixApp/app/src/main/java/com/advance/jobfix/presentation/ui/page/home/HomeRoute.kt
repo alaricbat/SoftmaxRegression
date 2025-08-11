@@ -18,6 +18,8 @@ fun HomeRoute (
     //TODO Update Screen State Later.
 
     //Basically showing Home Screen
-    HomeScreen()
+    HomeScreen(
+        openDrawer = openDrawer
+    )
 
 }
