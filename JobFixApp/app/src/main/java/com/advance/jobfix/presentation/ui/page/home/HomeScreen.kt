@@ -1,8 +1,8 @@
 package com.advance.jobfix.presentation.ui.page.home
 
 import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -32,7 +33,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -43,6 +43,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.advance.jobfix.R
+import com.advance.jobfix.presentation.ui.theme.GraphiteBlack
+import com.advance.jobfix.presentation.ui.theme.VioletAreBlue
+import com.advance.jobfix.presentation.ui.theme.WhiteTrafficWhite
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -62,12 +65,13 @@ fun HomeScreen(
         },
         topBar = {
             HomeTopAppBar(
+                modifier = Modifier,
                 openDrawer = openDrawer,
                 topAppBarState = topAppBarState,
                 scrollBehavior = scrollBehavior
             )
         },
-        modifier = modifier
+        modifier = modifier.background(WhiteTrafficWhite)
     ) { innerPadding ->
 
         val contentModifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
@@ -167,7 +171,10 @@ fun HomeScreen(
                                     musicalText.value.text + " - " +
                                     bodilyText.value.text
                         Log.d("HomeScreen", totalRank)
-                    }
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = VioletAreBlue
+                    )
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
@@ -201,7 +208,11 @@ private fun HomeTopAppBar(
                 modifier = Modifier.fillMaxWidth()
             )
         },
-        scrollBehavior = scrollBehavior
+        modifier = modifier,
+        scrollBehavior = scrollBehavior,
+        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+            containerColor = GraphiteBlack
+        )
     )
 }
 
