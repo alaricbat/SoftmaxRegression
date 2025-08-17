@@ -43,6 +43,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.advance.jobfix.R
+import com.advance.jobfix.data.JobScores
+import com.advance.jobfix.data.toJobLabeled
+import com.advance.jobfix.domain.predict
 import com.advance.jobfix.presentation.ui.theme.GraphiteBlack
 import com.advance.jobfix.presentation.ui.theme.VioletAreBlue
 import com.advance.jobfix.presentation.ui.theme.WhiteTrafficWhite
@@ -166,11 +169,13 @@ fun HomeScreen(
                         .fillMaxWidth()
                         .padding(PaddingValues(50.dp)),
                     onClick = {
-                        val totalRank =
-                            linguisticText.value.text + " - " +
-                                    musicalText.value.text + " - " +
-                                    bodilyText.value.text
-                        Log.d("HomeScreen", totalRank)
+                        val jobLabeled = JobScores(
+                            linguisticText.value.text.toInt(),
+                            musicalText.value.text.toInt(),
+                            bodilyText.value.text.toInt()
+                        ).toJobLabeled()
+                        Log.d("HomeScreen[jobLabeled]", jobLabeled.toString())
+                        Log.d("HomeScreen[predict]",predict(jobLabeled))
                     },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = VioletAreBlue

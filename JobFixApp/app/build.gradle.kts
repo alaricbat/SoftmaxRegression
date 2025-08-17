@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.chaquopy)
 }
 
 android {
@@ -16,6 +17,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+//        multiDexEnabled = true
+//
+        ndk {
+            // On Apple silicon, you can omit x86_64.
+            abiFilters += listOf("arm64-v8a", "x86_64")
+        }
     }
 
     buildTypes {
@@ -39,6 +47,23 @@ android {
     }
 }
 
+chaquopy {
+    defaultConfig {
+        version = "3.11"
+        pip {
+            install("matplotlib")
+            install("numpy")
+            install("pandas")
+        }
+    }
+
+//    sourceSets {
+//        getByName("main") {
+//            srcDirs("java/com/advance/jobfix/domain/python")
+//        }
+//    }
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -59,6 +84,4 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    implementation("com.github.holgerbrandl:krangl:0.18.4")
 }
